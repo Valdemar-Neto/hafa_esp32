@@ -1,4 +1,4 @@
-# Arquitetura do Projeto `digital_io`
+# Arquitetura do Projeto `hafa_esp32`
 
 Este projeto implementa uma arquitetura modular voltada para sistemas embarcados, baseada fortemente nos princípios de **Inversão de Dependência (DIP)** e conceitos de **Clean Architecture** (ou **Ports and Adapters / Arquitetura Hexagonal**), adaptados de forma idiomática para a linguagem C. 
 
