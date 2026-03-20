@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 // write
-static void real_gpio_write(void* context, bool value){
+static void gpio_write_implementation(void* context, bool value){
     // O valor do pino é o próprio endereço do ponteiro
     int pin = (int)(uintptr_t)context; 
     
@@ -14,7 +14,7 @@ static void real_gpio_write(void* context, bool value){
 }
 
 // read
-static bool real_gpio_read(const void* context){
+static bool gpio_read_implementation(const void* context){
     int pin = *(const int*) context;
     return gpio_get_level(pin) == 1;
 }
@@ -37,8 +37,8 @@ DigitalIO* create_gpio_output(int pin){
 
     // O ctx agora é o primeiro, garantimos a atribuição
     io->ctx = (void*)(uintptr_t)pin; 
-    io->write = real_gpio_write;
-    io->read = real_gpio_read;
+    io->write = gpio_write_implementation;
+    io->read = gpio_read_implementation;
 
     return io;
 }
