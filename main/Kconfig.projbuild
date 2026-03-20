@@ -1,0 +1,7 @@
+menu "Configurações de Debug"
+    config RUN_UNIT_TESTS
+        bool "Rodar testes unitários no boot"
+        default n
+        help
+            Se marcado, o ESP32 executará os testes do Unity antes da app_main real.
+endmenu
