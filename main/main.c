@@ -19,34 +19,32 @@ void app_main(void)
         printf("=== TESTES FINALIZADOS ===\n\n");
     #endif
 
-    // 1. Inicializa os drivers
     DigitalIO* led = create_gpio_output(2); 
-    DigitalIO* btn_io = create_gpio_input(0, true); // Botão BOOT
+    DigitalIO* btn_io = create_gpio_input(0, true); // boot
     
     if (led == NULL || btn_io == NULL) {
         printf("Erro ao inicializar drivers!\n");
         return;
     }
 
-    // 2. Inicializa o componente de domínio (Botão)
     Button my_button;
     button_init(&my_button, btn_io, 50, true);
 
     bool led_state = false;
-    static bool last_btn_state = false; // DECLARADO APENAS UMA VEZ AQUI
+    static bool last_btn_state = false; 
 
-    printf("Sistema Pronto! Use o botão BOOT para alternar o LED.\n");
+    printf("Sistema Pronto!\n");
 
     while (1) {
-        // Pega o tempo do RTOS para o debounce
+        //debounce
         uint32_t now = xTaskGetTickCount() * portTICK_PERIOD_MS;
 
-        // Lê o estado do botão (com o algoritmo de debounce interno)
+        //estado do botao
         bool current_pressed = button_is_pressed(&my_button, now);
 
-        // Lógica de Borda: detecta o momento exato do clique (transição 0 -> 1)
+        //deteccao da borda
         if (current_pressed && !last_btn_state) {
-            led_state = !led_state; // Toggle do estado
+            led_state = !led_state;
             
             if (led_state) {
                 led_on(led);
