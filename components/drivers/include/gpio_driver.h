@@ -3,7 +3,6 @@
 
 #include "digital_io.h"
 
-// Apenas os protótipos
 DigitalIO* create_gpio_output(int pin);
 void destroy_gpio(DigitalIO* io);
 

@@ -25,12 +25,10 @@ bool mock_read(const void *ctx) {
 void destroy_mock_digital_io(DigitalIO *io) {
     if (io == NULL) return;
 
-    // 1. Liberar o contexto interno primeiro
     if (io->ctx != NULL) {
         free(io->ctx);
     }
 
-    // 2. Liberar a estrutura principal
     free(io);
     
     printf("MOCK DESTROYED: Memória liberada com sucesso.\n");
