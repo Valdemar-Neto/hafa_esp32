@@ -50,11 +50,7 @@ hafa-esp32/
 
 ##  Example
 
-Vibration monitoring system with:
-
-* Sensor abstraction
-* Signal processing (FFT)
-* Threshold-based anomaly detection
+LED
 
 ##  Status
 
